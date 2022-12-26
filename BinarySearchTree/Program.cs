@@ -58,35 +58,50 @@ namespace BinarySearchTree
                     }
                 }
             }
-        }
-        public void find(string element, ref node parent, ref node currentnode)
-        {
-            currentnode = ROOT;
-            parent = null;
-            while ((currentnode != null) &&(currentnode.info != element))
+            public void find(string element, ref node parent, ref node currentnode)
             {
-                parent = currentnode;
-                if (string.Compare(element, currentnode.info) < 0)
-                    currentnode = currentnode.lchild;
-                else
-                    currentnode= currentnode.rchild;
+                currentnode = ROOT;
+                parent = null;
+                while ((currentnode != null) && (currentnode.info != element))
+                {
+                    parent = currentnode;
+                    if (string.Compare(element, currentnode.info) < 0)
+                        currentnode = currentnode.lchild;
+                    else
+                        currentnode = currentnode.rchild;
+                }
             }
-        }
-        public void inorder(node ptr)
-        {
-            if(ROOT = null)
+            public void inorder(node ptr)
             {
-                Console.WriteLine("Tree is empty");
-                return;
+                if (ROOT == null) 
+                {
+                    Console.WriteLine("Tree is empty");
+                    return;
+                }
+                if (ptr != null)
+                {
+                    inorder(ptr.lchild);
+                    Console.WriteLine(ptr.info + " ");
+                    inorder(ptr.rchild);
+                }
             }
-            if (ptr != null)
+            public void preorder(node ptr)
             {
-                inorder(ptr.lchild);
-                Console.WriteLine(ptr.info + "");
-                inorder(ptr.rchild);
+                if(ROOT == null)
+                {
+                    Console.WriteLine("Tree is empty");
+                    return;
+                }
+                if (ptr != null)
+                {
+                    Console.WriteLine(ptr.info + " ");
+                    preorder(ptr.lchild);
+                    preorder(ptr.rchild);
+                }
             }
+            
         }
-
+        
         static void Main(string[] args)
         {
         }
